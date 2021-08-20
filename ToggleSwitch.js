@@ -41,7 +41,7 @@ export default class ToggleSwitch extends React.Component {
         };
       default:
         return {
-          width: 46,
+          width: 40,
           padding: 12,
           circleWidth: 18,
           circleHeight: 18,
@@ -53,7 +53,6 @@ export default class ToggleSwitch extends React.Component {
   static propTypes = {
     isOn: PropTypes.bool.isRequired,
     label: PropTypes.string,
-    labelPosition: PropTypes.string,
     onColor: PropTypes.string,
     offColor: PropTypes.string,
     size: PropTypes.string,
@@ -76,7 +75,6 @@ export default class ToggleSwitch extends React.Component {
     offColor: "#ecf0f1",
     size: "medium",
     labelStyle: {},
-    labelPosition: 'left',
     thumbOnStyle: {},
     thumbOffStyle: {},
     trackOnStyle: {},
@@ -136,7 +134,6 @@ export default class ToggleSwitch extends React.Component {
       onToggle,
       disabled,
       labelStyle,
-      labelPosition,
       label,
       icon,
     } = this.props;
@@ -158,7 +155,7 @@ export default class ToggleSwitch extends React.Component {
 
     return (
       <View style={styles.container} {...this.props}>
-        {label && labelPosition === 'left' ? (
+        {label ? (
           <Text style={[styles.labelStyle, labelStyle]}>{label}</Text>
         ) : null}
         <TouchableOpacity
@@ -170,9 +167,6 @@ export default class ToggleSwitch extends React.Component {
             {icon}
           </Animated.View>
         </TouchableOpacity>
-        {label && labelPosition === 'right' ? (
-          <Text style={[styles.labelStyle, labelStyle]}>{label}</Text>
-        ) : null}
       </View>
     );
   }
